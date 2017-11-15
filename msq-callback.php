@@ -179,9 +179,18 @@ if(!$missingData){
       $Response = httpsPost($url, $strRequest);
       if($log)
           error_log('lw-response:'.$Response.'   lw-request:'.$strRequest);
+
+        $google_analytics_result = file_get_contents(
+            'https://www.google-analytics.com/collect?v=1&tid=UA-1458255-7&'.
+            'cid={$cid}&'.
+            't=event&'.
+            'ec=monitor&'.
+            'ea='.'car-dynamic'. //urlencode($LeadWizeUri) .
+            '&el='. urlencode($Response) 
+        );    
     //$google_analytics_result = file_get_contents('https://www.google-analytics.com/collect?v=1&tid=UA-1458255-7&cid=11111.11111&t=event&ec=QA-Leadwise&ea='.urlencode($NotesFromLeadProvider).'&el='.$Response );
     //$google_analytics_result = file_get_contents('https://www.google-analytics.com/collect?v=1&tid=UA-1458255-7&cid={$cid}&t=event&ec=QA-Leadwise&ea=' .urlencode($LeadWizeUri) .'&el='.$Response );
-  }
+}
  
 ?>
 <head>
