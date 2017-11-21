@@ -152,14 +152,7 @@ if(!$missingData){
     }else{
          if($debug) error_log("key_call_callerid -  not set");
     }
-    if(strpos($MobilePhone,'-') !== false) {
-    }
-    else if(substr($MobilePhone, 0, 2) == '02'){
-        $MobilePhone = substr_replace($MobilePhone, '-', 2, 0);
-    }
-    else{
-        $MobilePhone = substr_replace($MobilePhone, '-', 3, 0);
-    }
+
       
     $Email = '';
     $strRequest = 'LeadTypeID='.urlencode($LeadTypeID).
@@ -167,7 +160,7 @@ if(!$missingData){
                   '&ProviderLeadPK='.urlencode($ProviderLeadPK).
                   '&FirstName='.urlencode($FirstName).
                   '&LastName='.urlencode($LastName).
-                  '&MobilePhone='.'0'.urlencode($MobilePhone).
+                  '&MobilePhone='.urlencode($MobilePhone).
                   '&Email='.urlencode($Email).
                   '&utm_source='.urlencode($utm_source).
                   '&utm_medium='.urlencode($utm_medium).
@@ -190,7 +183,7 @@ if(!$missingData){
         );    
     //$google_analytics_result = file_get_contents('https://www.google-analytics.com/collect?v=1&tid=UA-1458255-7&cid=11111.11111&t=event&ec=QA-Leadwise&ea='.urlencode($NotesFromLeadProvider).'&el='.$Response );
     //$google_analytics_result = file_get_contents('https://www.google-analytics.com/collect?v=1&tid=UA-1458255-7&cid={$cid}&t=event&ec=QA-Leadwise&ea=' .urlencode($LeadWizeUri) .'&el='.$Response );
-}
+  }
  
 ?>
 <head>

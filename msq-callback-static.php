@@ -5,6 +5,7 @@
     $log=true;
     //init vars
     $MobilePhone=$device= $lpurl=$gclid=$utm_term=$uid=$cid=$utm_content=$title=$utm_source=$utm_medium=$utm_campaign=$label="";
+    settype ($MobilePhone, 'string' );
     $isDynamic=$isStatic=false;
     $missingData=empty($_GET);
 
@@ -108,13 +109,6 @@ if (!$missingData) {
              error_log("CLI -  not set");
         }
     }
-    if (strpos($MobilePhone, '-') !== false) {
-    } else if (substr($MobilePhone, 0, 2) == '02') {
-        $MobilePhone = substr_replace($MobilePhone, '-', 2, 0);
-    } else {
-
-        $MobilePhone = substr_replace($MobilePhone, '-', 3, 0);
-    }
     
     $Email = '';
     $strRequest = 'LeadTypeID='.urlencode($LeadTypeID).
@@ -122,7 +116,7 @@ if (!$missingData) {
                   '&ProviderLeadPK='.urlencode($ProviderLeadPK).
                   '&FirstName='.urlencode($FirstName).
                   '&LastName='.urlencode($LastName).
-                  '&MobilePhone='.'0'.urlencode($MobilePhone).
+                  '&MobilePhone='.urlencode($MobilePhone).
                   '&Email='.urlencode($Email).
                   '&utm_source='.urlencode($utm_source).
                   '&utm_medium='.urlencode($utm_medium).
